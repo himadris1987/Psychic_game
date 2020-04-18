@@ -12,9 +12,9 @@ let guessedLetters = [];
 var letterToGuess = null;
 
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+document.querySelector(".misscleo").style.display="none"
 function updateGuessesLeft() {
-    // Here we are grabbing the HTML element and setting it equal to the guessesLeft. (i.e. guessesLeft will get displayed in HTML)
-    document.querySelector('#guessLeft').innerHTML = "Guesses left: " + guessesLeft;
+    document.querySelector("#guessLeft").innerHTML = "Guesses left: " + guessesLeft;
 };
 
 function updateLetterToGuess() {
@@ -22,13 +22,13 @@ function updateLetterToGuess() {
 };
 
 function updateGuessesSoFar() {
-    document.querySelector('#let').innerHTML = "Your Guesses so far: " + guessedLetters.join(', ');
+    document.querySelector("#let").innerHTML = "Your Guesses so far: " + guessedLetters.join(", ");
 };
 var reset = function() {
     totalGuesses = 9;
     guessesLeft = 9;
     guessedLetters = [];
-    setTimeout(function() { document.querySelector('.mantis').style.display = 'none'; }, 5000);
+    setTimeout(function() { document.querySelector(".misscleo").style.display = "none"; }, 5000);
     updateLetterToGuess();
     updateGuessesLeft();
     updateGuessesSoFar();
@@ -47,7 +47,6 @@ document.onkeyup = function(event) {
         return false;
     }
     else if (check === false) {
-        ouch.play();
         alert("Invalid key pressed");
         return false;
     } else if (check === true) {
@@ -59,28 +58,25 @@ document.onkeyup = function(event) {
         if (guessesLeft > 0) {
             if (userGuess == letterToGuess) {
                 wins++;
-                yay.play();
                 document.querySelector('#wins').innerHTML = "Wins: " + wins;
                 userGuess = userGuess.toUpperCase();
-                document.querySelector('.mantis').style.display = '';
-                document.querySelector('.mantis').style.height = '4em';
-                document.querySelector('.mantis').innerHTML = "Good guess wee grasshopper " + userGuess + " was the letter I was thinking of!";
+                document.querySelector(".misscleo").style.display = "";
+                document.querySelector(".misscleo").style.height = "4em";
+                document.querySelector(".misscleo").innerHTML = "You are Psychic " + userGuess + " that was the letter!";
                 reset();
             }
         } else if (guessesLeft == 0) {
             losses++;
-            boo.play();
-            document.querySelector('#losses').innerHTML = "Losses: " + losses;
-            document.querySelector('.mantis').style.display = '';
-            document.querySelector('.mantis').innerHTML = "Sorry grasshopper, I was thinking of the letter " + letterToGuess;
-            // Then we'll call the reset. 
+            document.querySelector("#losses").innerHTML = "Losses: " + losses;
+            document.querySelector(".misscleo").style.display = "";
+            document.querySelector(".misscleo").innerHTML = "Sorry you are no psychic" + letterToGuess;
             reset();
 
         }
         return false;
         } 
     else {
-        alert("Oops, we have an error");
+        alert("Error");
     }
 
 
