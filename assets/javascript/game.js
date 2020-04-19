@@ -41,7 +41,6 @@ document.onkeyup = function(event) {
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     var check = computerChoices.includes(userGuess);
     var checkDouble = guessedLetters.includes(userGuess);
-    var resetGuesses = function() {guessesLeft=9; document.querySelector("#guessLeft").innerHTML="";
     if (checkDouble === true){
         console.log("double letter");
         alert("Please try another letter");
@@ -64,14 +63,14 @@ document.onkeyup = function(event) {
                 document.querySelector(".misscleo").style.display = "";
                 document.querySelector(".misscleo").style.height = "4em";
                 document.querySelector(".misscleo").innerHTML = "You are Psychic " + userGuess + " that was the letter!";
-                resetGuesses();
+                reset();
             }
         } else if (guessesLeft == 0) {
             losses++;
             document.querySelector("#losses").innerHTML = "Losses: " + losses;
             document.querySelector(".misscleo").style.display = "";
             document.querySelector(".misscleo").innerHTML = "Sorry you are no psychic" + letterToGuess;
-            resetGuesses();
+            reset();
 
         }
         return false;
