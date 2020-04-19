@@ -12,7 +12,6 @@ let guessedLetters = [];
 var letterToGuess = null;
 
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-document.querySelector(".misscleo").style.display="none"
 function updateGuessesLeft() {
     document.querySelector("#guessLeft").innerHTML = "Guesses left: " + guessesLeft;
 };
@@ -60,16 +59,15 @@ document.onkeyup = function(event) {
                 wins++;
                 document.querySelector('#wins').innerHTML = "Wins: " + wins;
                 userGuess = userGuess.toUpperCase();
-                document.querySelector(".misscleo").style.display = "";
-                document.querySelector(".misscleo").style.height = "4em";
-                document.querySelector(".misscleo").innerHTML = "You are Psychic " + userGuess + " that was the letter!";
+                alert("You are a psychic play again?");
+               // document.querySelector(".misscleo").innerHTML = "You are Psychic " + userGuess + " that was the letter!";
                 reset();
             }
         } else if (guessesLeft == 0) {
             losses++;
             document.querySelector("#losses").innerHTML = "Losses: " + losses;
-            document.querySelector(".misscleo").style.display = "";
-            document.querySelector(".misscleo").innerHTML = "Sorry you are no psychic" + letterToGuess;
+            alert("Sorry you are not a psychic play again?");
+           // document.querySelector(".misscleo").innerHTML = "Sorry you are no psychic" + letterToGuess;
             reset();
 
         }

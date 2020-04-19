@@ -2,3 +2,9 @@
 body {background-color:lightblue;}
 .list-group {border-color: lightcoral;}
 .list-group{border-radius: 10px;}
+
+img {
+    max-width: 40%;
+    height: auto;
+    float: right;
+  }
